@@ -26,7 +26,6 @@ class MainTests:
         submarine = Submarine(0,0,0)
     
         for instruction in instructions:
-            print(submarine.depth)
             submarine.dive_deprecated(instruction)
     
         calculation = submarine.depth * submarine.horizontal_position
@@ -46,6 +45,24 @@ class MainTests:
         expected_result = 1848454425
     
         assert calculation == expected_result, f"Depth * position expected to be {expected_result}, but found {calculation}"
+
+    
+    def day3_part1(x):
+        result = 1
+        expected_result = 1
+        assert result == expected_result, f"Expected {expected_result}, but found {result}"
+
+    def day3_part2(x):
+        result = 1
+        expected_result = 1
+        assert result == expected_result, f"Expected {expected_result}, but found {result}"
+
+    def test_template(x):
+        result = 1
+        expected_result = 1
+        assert result == expected_result, f"Expected {expected_result}, but found {result}"
+
+
 
 class UnitTests:
     def test_main_sweep(df):
@@ -115,11 +132,20 @@ def run_day1_tests():
     MainTests.day1_part2(day1_input)
 
 def run_day2_tests():
-    day2_input = read_file('input/day2_sample.txt')
+    day2_input = read_file('input/day2.txt')
     UnitTests.test_dive_forward()
     UnitTests.test_dive_up()
     UnitTests.test_dive_down()
+    MainTests.day2_part1(day2_input)
+    MainTests.day2_part2(day2_input)
 
-#run_day1_tests()
-run_day2_tests()
+def run_day3_tests():
+    day3_input = read_file('input/day3_sample.txt')
+    # day3_input = read_file('input/day3.txt')
+    MainTests.day3_part1(day3_input)
+    MainTests.day3_part2(day3_input)
+
+# run_day1_tests()
+# run_day2_tests()
+run_day3_tests()
 
