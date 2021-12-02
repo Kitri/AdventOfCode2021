@@ -1,8 +1,8 @@
-import submarine as sub
+import submarine
 import common
 from common import get_df_from_file, read_file
 import importlib
-importlib.reload(sub)
+importlib.reload(submarine)
 importlib.reload(common)
 
 
@@ -26,21 +26,26 @@ class MainTests:
         submarine = Submarine(0,0,0)
     
         for instruction in instructions:
-            submarine = dive_deprecated(instruction)
+            print(submarine.depth)
+            submarine.dive_deprecated(instruction)
     
         calculation = submarine.depth * submarine.horizontal_position
+
+        expected_result = 1561344
     
-        assert calculation == 1, f"Depth * position expected to be x, but found {calculation}"
+        assert calculation == expected_result, f"Depth * position expected to be {expected_result}, but found {calculation}"
     
     def day2_part2(instructions):
         submarine = Submarine(0,0,0)
     
         for instruction in instructions:
-            submarine = dive(instruction)
+            submarine.dive(instruction)
     
         calculation = submarine.depth * submarine.horizontal_position
+
+        expected_result = 1848454425
     
-        assert calculation == 1, f"Depth * position expected to be x, but found {calculation}"
+        assert calculation == expected_result, f"Depth * position expected to be {expected_result}, but found {calculation}"
 
 class UnitTests:
     def test_main_sweep(df):
@@ -69,7 +74,35 @@ class UnitTests:
         assert depth_sum == expected_depth_sum_sum, f"Sum of depth sums expected to be {expected_depth_sum_sum}, but found {depth_sum}"
         assert depth_calc == expected_depth_calc_sum, f"Sum of depth differences expected to be {expected_depth_calc_sum}, but found {depth_calc}"
         assert expected_df_shape_after_transform == sonar_sweep_shape, f"Expected df to be {expected_df_shape_after_transform} (rows, cols) but found {sonar_sweep_shape}" 
-        
+
+    def test_dive_forward():
+        sub = Submarine(depth=-3, horizontal_position=5, aim=2)
+        sub.dive('forward 6')
+
+        expected_result = (9, 11, 2)
+        result = (sub.depth, sub.horizontal_position, sub.aim)
+
+        assert result == expected_result, f"Forward: expected {expected_result}, got {result}"
+
+    def test_dive_up():
+        sub = Submarine(depth=3, horizontal_position=4, aim=5)
+        sub.dive('up 3')
+
+        expected_result = (3, 4, 2)
+        result = (sub.depth, sub.horizontal_position, sub.aim)
+
+        assert result == expected_result, f"Up: expected {expected_result}, got {result}"
+
+    def test_dive_down():
+        sub = Submarine(depth=3, horizontal_position=4, aim=5)
+        sub.dive('down 3')
+
+        expected_result = (3, 4, 8)
+        result = (sub.depth, sub.horizontal_position, sub.aim)
+
+        assert result == expected_result, f"Down: expected {expected_result}, got {result}"
+
+
 
 
 # Run All
@@ -82,9 +115,11 @@ def run_day1_tests():
     MainTests.day1_part2(day1_input)
 
 def run_day2_tests():
-    day2_input = read_file('input/Day2.txt')
-    MainTests.day2_part1(day2_input)
-    MainTests.day2_part2(day2_input)
+    day2_input = read_file('input/day2_sample.txt')
+    UnitTests.test_dive_forward()
+    UnitTests.test_dive_up()
+    UnitTests.test_dive_down()
 
-run_day1_tests()
-#run_day2_tests()
+#run_day1_tests()
+run_day2_tests()
+

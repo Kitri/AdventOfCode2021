@@ -7,13 +7,13 @@ class Submarine:
 
   # foward, up or down
   #input e.g. forward 1
-  def dive(instruction):
+  def dive(self, instruction):
     (inst, num) = instruction.split(' ')
     num = int(num)
 
     if(inst == 'forward'):
         self.horizontal_position += num
-        self.depth += sub.aim * num
+        self.depth += self.aim * num
     elif(inst == 'up'):
         self.aim -= num
     elif(inst == 'down'):
@@ -21,7 +21,7 @@ class Submarine:
 
   # foward, up or down
   #input e.g. forward 1
-  def dive_deprecated(instruction):
+  def dive_deprecated(self, instruction):
     (inst, num) = instruction.split(' ')
     num = int(num)
 
