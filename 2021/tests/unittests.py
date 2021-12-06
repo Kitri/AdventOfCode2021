@@ -56,3 +56,10 @@ class UnitTests:
         result = (sub.depth, sub.horizontal_position, sub.aim)
 
         assert result == expected_result, f"Down: expected {expected_result}, got {result}"
+
+    def test_power_consumption(sample_input):
+       expected_result =198 
+
+       result = submarine.calculate_power_consumptions(sample_input)
+
+       assert result == expected_result, f"Gamma calculation expected {expected_result}, found {result}"
