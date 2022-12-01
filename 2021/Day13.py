@@ -88,9 +88,9 @@ def print_grid(grid, max_x, max_y):
         line = ''
         for x in range(max_x): # get max y
             if((x,y) in grid):
-                line += '# '
+                line += '#'
             else:
-                line += '. '
+                line += '.'
         print(line)
 def find_maxes(grid):
     max_x = 0
@@ -131,7 +131,8 @@ def part2_sample(input_arr):
     new_grid = iterate_folds(folds, grid)
     for g in new_grid:
         max_x, max_y = find_maxes(g)
-        print(f'{max_x} {max_y}')
+        # print(f'{max_x} {max_y}')
+        print(len(g))
         print_grid(g, max_x+1, max_y+1)
         print('-----')
             
