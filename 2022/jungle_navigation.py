@@ -1,52 +1,6 @@
 import file_parser as c
 import numpy as np
 
-def process_round(elf, me):
-    points = {
-        'A': 1,
-        'B': 2,
-        'C': 3,
-        'X': 1,
-        'Y': 2,
-        'Z': 3
-    }
-
-    outcome_for_me = {
-        ('A','X'): 3, 
-        ('B','X'): 0,
-        ('C','X'): 6,
-        ('A','Y'): 6, 
-        ('B','Y'): 3, 
-        ('C','Y'): 0,
-        ('A','Z'): 0, 
-        ('B','Z'): 6, 
-        ('C','Z'): 3,
-    }
-
-    return points[me] + outcome_for_me[(elf, me)]
-
-
-
-def dummy_day2(input_list):
-    # Opponent: A for Rock, B for Paper, and C for Scissors
-    # You: X for Rock, Y for Paper, and Z for Scissors
-    # Score per shape: 1 for Rock, 2 for Paper, and 3 for Scissors
-    # Score per outcome: 0 if you lost, 3 if the round was a draw, and 6 if you won
-    my_points = 0
-    for x in input_list:
-        elf, me = x.split()
-        round_points = process_round(elf, me)
-        print(round_points)
-        my_points += round_points
-
-    print(my_points)
-
-
-    return my_points
-
-sample = c.read_file(f'input/day2_sample.txt')
-dummy_day2(sample)
-
 def get_max_calories_optimised_array_storage(calories_input: list, number_max_elements: int):
     calories_input_len = len(calories_input)
     calories_per_elf = []
