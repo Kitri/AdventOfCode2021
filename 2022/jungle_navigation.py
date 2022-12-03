@@ -1,5 +1,7 @@
 import file_parser as c
 import numpy as np
+import common_functions as common
+import rucksack_utilities as rucksack
 
 def get_max_calories_optimised_array_storage(calories_input: list, number_max_elements: int):
     calories_input_len = len(calories_input)
@@ -55,3 +57,16 @@ def get_max_calories_non_optimised(calories_input: list, number_max_elements: in
     y_max_3 = y_sorted[:number_max_elements]
 
     return np.sum(y_max_3)
+
+
+def calculate_priority_for_common_items_in_rucksack(mode, rucksacks):
+    priority_sum = 0
+    rucksacks_by_mode = np.array_split(rucksacks, len(rucksacks)/3) if mode == 2 \
+        else [rucksack.split_rucksack_into_2_compartments(item) for item in rucksacks]
+
+    for item in rucksacks_by_mode:
+        common_item = common.get_intersections(*item)[0]
+        letter_priority = rucksack.get_priority(common_item) 
+        priority_sum += letter_priority
+
+    return priority_sum

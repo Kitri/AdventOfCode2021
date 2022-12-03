@@ -24,6 +24,8 @@ def convert_to_outcome(letter):
 
     return [outcome for outcome in mappings if letter == mappings[outcome]][0]
 
+# A B
+# A,B
 def parse_input(mode: int, input_list: list):
     convert_func_b = convert_to_shape if mode == 1 else convert_to_outcome
     return [(convert_to_shape(a), convert_func_b(b)) for a,b in (x.split() for x in input_list)]

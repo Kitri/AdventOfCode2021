@@ -1,8 +1,7 @@
-
-import common_functions as cf
 import file_parser as fp
 import jungle_navigation as jungle
 import games as g
+import common_functions as cf
 
 descriptions = ['Part1 Sample', 'Part1 Full', 'Part2 Sample','Part2 Full']
 
@@ -13,10 +12,6 @@ def run_test(description, expected, func):
 
 def read_inputs(day):
     return(fp.read_file(f'input/day{day}_sample.txt'), fp.read_file(f'input/day{day}.txt'))
-
-def dummy_function(input: str):
-    print(input)
-    return input
 
 def day1_tests():
     expected = [24000, 67450, 45000, 199357]
@@ -52,9 +47,9 @@ def day2_tests():
         run_test(descriptions[i], expected[i], lambda: g.rock_paper_scissors(*params[i]))
 
 def day3_tests():
-    expected = []
-    sample, full = read_inputs(2)
-    params = [[sample], [full], [sample], [full]]
+    expected = [157, 7766, 70, 2415]
+    sample, full = read_inputs(3)
+    params = [[1, sample], [1, full], [2, sample], [2, full]]
 
     for i, _ in enumerate(expected):
-        run_test(descriptions[i], expected[i], lambda: dummy_function(*params[i]))
+        run_test(descriptions[i], expected[i], lambda: jungle.calculate_priority_for_common_items_in_rucksack(*params[i]))

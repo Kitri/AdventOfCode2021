@@ -3,3 +3,4 @@ bin/
 lib/
 *.cfg
 *.pyc
+2022/.vscode/settings.json

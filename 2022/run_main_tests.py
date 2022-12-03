@@ -1,5 +1,5 @@
-import main_tests
-main_tests.day1_tests()
-main_tests.compare_day1_optimisations()
-main_tests.day2_tests()
-main_tests.day3_tests()
+import main
+main.day1_tests()
+main.compare_day1_optimisations()
+main.day2_tests()
+main.day3_tests()

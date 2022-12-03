@@ -1,6 +1,6 @@
 import pytest
-from games import Shape, Outcome
 import games as g
+from games import Shape, Outcome
 
 testdata = [
     ('A', Shape.ROCK),
@@ -15,6 +15,7 @@ def test_shape_convert(letter, expected):
     converted = g.convert_to_shape(letter) 
     assert converted == expected, f"Expected {expected}, got {converted}"
 
+test_shape_convert('A',Shape.ROCK)
 def test_parse_input_part_1():
     input_list = ['A Y', 'B X', 'C Z']
     expected_output = [
