@@ -1,5 +1,6 @@
 import main
-main.day1_tests()
+main.day1()
 main.compare_day1_optimisations()
-main.day2_tests()
-main.day3_tests()
+main.day2()
+main.day3()
+main.day4()
