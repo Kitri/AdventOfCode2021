@@ -1,4 +1,4 @@
-import temp_day4 as d
+import elf_work
 import pytest
 
 testdata = [
@@ -11,7 +11,7 @@ testdata = [
 ]
 @pytest.mark.parametrize("minA,maxA,minB,maxB, expected", testdata)
 def test_contains(minA,maxA,minB,maxB, expected):
-    result = d.contains_all(minA,maxA,minB,maxB)
+    result = elf_work.contains_all(minA,maxA,minB,maxB)
     assert result == expected, f"Expected {expected}, but got {result}"
 
 testdata = [
@@ -27,5 +27,5 @@ testdata = [
 ]
 @pytest.mark.parametrize("minA,maxA,minB,maxB, expected", testdata)
 def test_overlap(minA,maxA,minB,maxB, expected):
-    result = d.overlaps(minA,maxA,minB,maxB)
+    result = elf_work.overlaps(minA,maxA,minB,maxB)
     assert result == expected, f"Expected {expected}, but got {result}"

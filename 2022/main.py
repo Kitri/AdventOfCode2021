@@ -2,14 +2,14 @@ import file_parser as fp
 import jungle_navigation as jungle
 import games as g
 import common_functions as cf
-import temp_day4 as day4
+import elf_work as day4
 
 descriptions = ['Part1 Sample', 'Part1 Full', 'Part2 Sample','Part2 Full']
 
 # setup (optional) = setting up for next day
-def read_inputs(day: int, setup: bool=False):
+def read_inputs(day: int):
     sample =fp.read_file(f'input/day{day}_sample.txt') 
-    full = fp.read_file(f'input/day{day}.txt') if setup == False else [] 
+    full = fp.read_file(f'input/day{day}.txt')
     return(sample, full)
 
 def run_test(description: str, expected: list, func: callable):
@@ -43,14 +43,16 @@ def compare_day1_optimisations():
     cf.run_with_timeprints(lambda: jungle.get_max_calories(2,full),'Sum in original iteration')
     cf.run_with_timeprints(lambda: jungle.get_max_calories_optimised_array_storage(2,full),'Optimised + keep only 4 items in array')
 
-### Configuration for main
-# expected: list[4] - expected values: p1_sample, p1, p2_sample, p2
-# day: int - day number
-# func: name of the function that runs this day
-# params (optional):
-#    mode:  single - add single item to all params
-#           list - add a list to all params
-#           different - add list to param by index
+''' Configuration for main
+ expected - list[4] - expected values: p1_sample, p1, p2_sample, p2
+ day      - int - day number
+ func     -  name of the function that runs this day
+
+ params (optional):
+    mode:  single - add single item to all params
+           list - add a list to all params
+           different - add list to param by index
+'''
 main_configuration = [
     {
         'expected': [24000, 67450, 45000, 199357],
@@ -70,14 +72,14 @@ main_configuration = [
     {
         'expected': [2,459,4,779],
         'day': 4,
-        'func': day4.day4_stuff
+        'func': day4.determine_work_share
     }
 ]
 
-def run_day(config, setup=False):
+def run_day(config):
     day = config['day']
     print(f"###### Day {day}")
-    sample, full = read_inputs(day, setup)
+    sample, full = read_inputs(day)
     params = [[1, sample], [1, full], [2, sample], [2, full]]
     if 'params' in config:
         params = add_params_from_config(config['params'])
