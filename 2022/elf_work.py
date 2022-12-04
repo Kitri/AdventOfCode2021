@@ -1,5 +1,5 @@
 def contains_all(minA,maxA,minB,maxB):
-   return (minA >= minB and maxA <= maxB) or (minB >= minA and maxB <= maxA) 
+   return (minA <= minB <= maxB <= maxA) or (minB <= minA <= maxA <= maxB)
 
 def overlaps(minA,maxA,minB,maxB):
     return maxA >= minB and maxB >= minA
