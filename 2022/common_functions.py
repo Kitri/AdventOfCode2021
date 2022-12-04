@@ -12,7 +12,7 @@ def run_with_timeprints(func: callable, func_description: str = ''):
     return res
 
 def get_intersection(list_a: list, list_b: list) -> list:
-    return sorted([item for item in set(list_a) if item in set(list_b)])
+    return sorted(set(list_a).intersection(set(list_b)))
 
 def get_intersections(*input_lists, **kwargs) -> list:
     recursive = kwargs.get('recursive',False)

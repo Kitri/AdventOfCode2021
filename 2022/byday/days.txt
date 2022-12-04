@@ -1,0 +1,5 @@
+Day 1 - jungle_navigation. Calorie counter. Input numbers separated by empty lines, sum groups together.
+Day 2 - games. RPS. Input "opponent me" then "opponent outcome"
+Day 3 - Rucksak organise - get common letter in both, get ascii
+Day 4 - Overlapping / fully contained number ranges 
+       
