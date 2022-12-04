@@ -68,7 +68,7 @@ main_configuration = [
         'func': jungle.calculate_priority_for_common_items_in_rucksack
     },
     {
-        'expected': [2,459,4],
+        'expected': [2,459,4,1],
         'day': 4,
         'func': day4.day4_stuff
     }
