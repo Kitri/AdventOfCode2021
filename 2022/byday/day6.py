@@ -1,21 +1,22 @@
 def find_marker(input_str,num_letters):
-    x = []
+    tracker = []
     counter = 0
     idx = 0
-    for c in input_str:
-        idx += 1
-        if c not in x:
-            counter += 1
-            x.append(c)
-        else:
-            counter = 0
-            c_index = x.index(c)
-            
-            x = x[c_index+1:]
-            x.append(c)
 
-        if len(x) == num_letters:
-            return idx
+    for idx in range(len(input_str)):
+        c = input_str[idx]
+
+        if c in tracker:
+            counter = 0
+            c_index = tracker.index(c)
+            tracker = tracker[c_index+1:]
+        else:
+            counter += 1
+
+        tracker.append(c)
+
+        if num_letters == len(tracker):
+            return idx+1
 
 sample = [x.strip() for x in open('input/day6_sample.txt').readlines()]
 full = [x.strip() for x in open('input/day6.txt').readlines()]
@@ -34,4 +35,4 @@ assert find_marker(sample[2],14) == 23
 assert find_marker(sample[3],14) == 29
 assert find_marker(sample[4],14) == 26
 
-print('Part1 ', find_marker(full[0],14))
+print('Part2 ', find_marker(full[0],14))
