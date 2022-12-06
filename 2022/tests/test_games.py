@@ -1,6 +1,6 @@
 import pytest
-import games as g
-from games import Shape, Outcome
+import src.games as g
+from src.games import Shape, Outcome
 
 testdata = [
     ('A', Shape.ROCK),

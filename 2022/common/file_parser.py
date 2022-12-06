@@ -13,5 +13,8 @@ def read_file_old(file_name):
 
     return lines
 
-def read_file(file_name: str) -> list:
+def read_file_stripped(file_name: str) -> list:
     return [x.strip() for x in open(file_name).readlines()]
+
+def read_file(file_name: str) -> list:
+    return open(file_name).readlines()

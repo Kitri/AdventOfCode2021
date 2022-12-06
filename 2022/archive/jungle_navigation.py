@@ -1,5 +1,5 @@
 import numpy as np
-import common_functions as common
+from common import common_functions as common
 import rucksack_utilities as rucksack
 
 def get_max_calories_optimised_array_storage(calories_input: list, number_max_elements: int):

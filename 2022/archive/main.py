@@ -1,9 +1,9 @@
-import file_parser as fp
+# Move into main folder for this to work again
+from common import file_parser as fp
+from common import common_functions as cf
 import jungle_navigation as jungle
 import games as g
-import common_functions as cf
 import elf_work as day4
-import day5_temp as day5
 
 descriptions = ['Part1 Sample', 'Part1 Full', 'Part2 Sample','Part2 Full']
 
@@ -74,11 +74,6 @@ main_configuration = [
         'expected': [2,459,4,779],
         'day': 4,
         'func': day4.determine_work_share
-    },
-    {
-        'expected': [0],
-        'day': 5,
-        'func': day5.do_day5
     }
 ]
 
@@ -99,5 +94,5 @@ def run_all_days(all_config):
         run_day(config)
         print()
 
-# run_all_days(main_configuration)
-run_day(main_configuration[4])
+run_all_days(main_configuration)
+# run_day(main_configuration[3])

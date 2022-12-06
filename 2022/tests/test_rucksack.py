@@ -1,5 +1,5 @@
 import pytest
-import rucksack_utilities as rucksack
+import src.rucksack_utilities as rucksack
 
 testdata = [
     ('a',1),

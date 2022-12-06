@@ -1,5 +1,5 @@
 import pytest
-import common_functions as common
+import src.common.common_functions as common
 
 
 testdata = [

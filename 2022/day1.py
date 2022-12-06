@@ -1,4 +1,4 @@
-import file_parser
+import common.file_parser as file_parser
 
 sample = file_parser.read_file(f'input/day1_sample.txt') 
 full =  file_parser.read_file(f'input/day1.txt')

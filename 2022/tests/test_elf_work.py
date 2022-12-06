@@ -1,4 +1,4 @@
-import elf_work
+import src.elf_work as elf_work
 import pytest
 
 testdata = [
