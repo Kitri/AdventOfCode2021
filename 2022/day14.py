@@ -25,22 +25,17 @@ def create_cave_from_input(input_list):
                         cave[y_i] = []
                     if x1 not in cave[y_i]:
                         bisect.insort_right(cave[y_i], x1)
+    
+    x_max = 0
+    x_min = 9999
+    for _, x in cave.items():
+        if len(x) > 0:
+            if x[0] < x_min:
+                x_min = x[0]
+            if x[-1] > x_max:
+                x_max = x[-1]
 
-    return cave
-
-# def init_cave():
-#     return {
-#         494: [9],
-#         495: [9],
-#         496: [6,9],
-#         497: [6,9],
-#         498: [4,5,6,9],
-#         499: [9],
-#         500: [9],
-#         501: [9],
-#         502: [4,5,6,7,8,9],
-#         503: [4]
-#     }
+    return (cave,x_min,x_max)
 
 def next_blocked_down(x: int,y: int, cave: dict):
     row = cave.setdefault(y, [])
@@ -79,7 +74,7 @@ def print_cave(walls, cave):
                 print('.', end='')
         print('')
 
-def move_sand(cave: dict):
+def move_sand(cave: dict, has_floor: bool = False, max_x: int = 0):
     rest_counter = 0
     start_x = 0
     start_y = 500
@@ -87,19 +82,27 @@ def move_sand(cave: dict):
     pos_x = start_x
     pos_y = start_y
 
-    # for i in range(0,500):
+    # for i in range(0,10000):
     while(True):
         pos_x = next_blocked_down(pos_x, pos_y, cave)
+        is_floor = False
         # print('Next D', pos_x)
         if pos_x == -1:
-            break
+            if has_floor:
+                pos_x = max_x + 2
+                is_floor = True
+            else: 
+                break
         
-        if is_blocked(pos_x, pos_y-1, cave):
-            if is_blocked(pos_x, pos_y+1, cave):
+        if is_blocked(pos_x, pos_y-1, cave) or is_floor:
+            if is_blocked(pos_x, pos_y+1, cave) or is_floor:
                 pos_x -= 1 #rest one level above blocked
                 # print('come to rest', pos_x, pos_y)
                 bisect.insort_right(cave[pos_y], pos_x)
                 rest_counter += 1
+                if (pos_x == start_x) and (pos_y == start_y):
+                    # print('ending')
+                    break
                 # go to next sand
                 pos_x = start_x
                 pos_y = start_y
@@ -114,14 +117,29 @@ def move_sand(cave: dict):
     return cave,rest_counter
 
 def part1(input_list):
-    cave = create_cave_from_input(input_list)
+    cave,min_x,max_x = create_cave_from_input(input_list)
+    print(min_x, max_x)
     new_cave, rest_counter = move_sand(cave)
 
     walls = create_cave_from_input(input_list)
     print_cave(walls, new_cave)
     return rest_counter
 
+def part2(input_list):
+    cave,min_x,max_x = create_cave_from_input(input_list)
+    new_cave, rest_counter = move_sand(cave, True, max_x)
+
+    walls = create_cave_from_input(input_list)
+    # print_cave(walls, new_cave)
+    print(rest_counter)
+
+    return rest_counter
+
+
 sample = fp.read_file_stripped('input/day14_sample.txt')
 full = fp.read_file_stripped('input/day14.txt')
 
-print(part1(full)) #625
+# print(part1(full)) #625
+part2(full)
+
+# two plus the highest y coordinate
