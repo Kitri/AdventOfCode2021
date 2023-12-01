@@ -11,7 +11,7 @@ def part1(calibration_document):
     return sum_of_calibration_values
 
 def part2(calibration_document):
-    mapping = { 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, }
+    mapping = { 'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, }
 
     sum_of_calibration_values = 0
 
