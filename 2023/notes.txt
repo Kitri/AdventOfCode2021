@@ -1,0 +1,34 @@
+Graph Algorithms:
+
+Topological Sort: Useful for solving problems involving dependencies between tasks.
+Minimum Spanning Tree (e.g., Kruskal's or Prim's Algorithm): Helpful in problems where you need to find the minimum cost to connect all nodes.
+Dynamic Programming:
+
+Memoization and Tabulation: Useful for optimizing recursive algorithms by storing and reusing intermediate results.
+Longest Common Subsequence (LCS): Useful for problems involving similarities between sequences.
+String Algorithms:
+
+Edit Distance (Levenshtein Distance): Useful for comparing strings and finding the minimum number of edits required to transform one string into another.
+String Matching Algorithms (e.g., Knuth-Morris-Pratt or Rabin-Karp): Useful for finding occurrences of a pattern in a text.
+Number Theory:
+
+Prime Number Generation and Testing: Useful in problems where prime numbers play a role.
+GCD (Greatest Common Divisor) and LCM (Least Common Multiple): Useful for problems involving fractions or modular arithmetic.
+Geometry Algorithms:
+
+Computational Geometry Algorithms: Helpful for problems involving geometric shapes, intersections, etc.
+Search Algorithms:
+
+Binary Search: Useful for problems where you need to efficiently find a specific value in a sorted list.
+Bit Manipulation:
+
+Bitwise Operations: Useful for problems involving efficient storage and manipulation of binary data.
+Combinatorics:
+
+Permutations and Combinations: Useful in problems involving arrangements and selections.
+Backtracking:
+
+N-Queens Problem, Sudoku Solver, etc.: Useful for problems where you need to explore all possible solutions.
+Game Theory:
+
+Minimax Algorithm: Useful in problems that involve decision-making and optimal strategy.
