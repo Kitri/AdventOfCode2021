@@ -9,6 +9,12 @@ def parse_input(input_list):
     for i in range(0, len(input_list), 3):
         pairs.append((ast.literal_eval(input_list[i]), ast.literal_eval(input_list[i+1])))
     return pairs
+def parse_input_part2(input_list):
+    ret_list = []
+    for line in input_list:
+        if line != '':
+            ret_list.append(ast.literal_eval(line))
+    return ret_list
 
 def compare(left_item, right_item, outer_loop=True):
     for (left, right) in zip_longest(left_item, right_item):
@@ -55,11 +61,40 @@ def part1(input_list):
     # [print(type(p[1])) for p in pairs]
 
     return sum(indexes)
+
+def part2(input_list):
+    items = parse_input_part2(input_list)
+    items.append([[2]])
+    items.append([[6]])
+    while(True):
+        did_swap = False
+        for idx in range(len(items)-1):
+            in_order = compare(items[idx], items[idx+1])
+            if not in_order:
+                did_swap = True
+                # print('swapping', idx, idx+1)
+                temp = items[idx]
+                items[idx] = items[idx+1]
+                items[idx+1] = temp
+        if did_swap == False:
+            break
+        
+    
+    decoder_key = 1
+    for idx,x in enumerate(items):
+        if x == [[2]] or x == [[6]]:
+            decoder_key *= idx+1
+
+    return decoder_key
+
 sample = fp.read_file_stripped('input/day13_sample.txt')
 full = fp.read_file_stripped('input/day13.txt')
 
-assert part1(sample) == 13
-print(part1(full)) #6240 vs 6251
+# assert part1(sample) == 13
+# print(part1(full)) #6240 vs 6251
+
+assert part2(sample) == 140
+print(part2(full))
 
 
 assert compare([[4,4],4,4,4], [[4,4],4,4]) == False
